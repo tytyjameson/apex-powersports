@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-barlow: 'Barlow', sans-serif;
+  --font-barlow-condensed: 'Barlow Condensed', sans-serif;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #0a0a0a; color: #f5f5f0; }
+
+  input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: #2a2a2a;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #f05a1a;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #0a0a0a;
+  }
+  input[type='range']::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #f05a1a;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #0a0a0a;
+  }
+
+  input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 2px;
+    background: #181818;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s;
+  }
+  input[type='checkbox']:checked {
+    background: #f05a1a;
+    border-color: #f05a1a;
+  }
+  input[type='checkbox']:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .font-display { font-family: var(--font-bebas); }
+  .font-cond    { font-family: var(--font-barlow-condensed); }
+  .font-body    { font-family: var(--font-barlow); }
+
+  .btn {
+    @apply inline-block font-cond font-bold tracking-widest uppercase rounded-sm cursor-pointer border-none transition-all duration-200 no-underline;
+  }
+  .btn-primary {
+    @apply bg-orange text-white hover:bg-orange-dim hover:-translate-y-px;
+  }
+  .btn-outline {
+    @apply bg-transparent text-cream border border-[#2a2a2a] hover:border-orange hover:text-orange;
+  }
+  .btn-white {
+    @apply bg-white text-orange hover:bg-gray-100 hover:-translate-y-px;
+  }
+
+  .section-label {
+    @apply font-cond text-xs font-semibold tracking-[0.3em] uppercase text-orange mb-3 flex items-center gap-2;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-6 h-px bg-orange;
+  }
+}
